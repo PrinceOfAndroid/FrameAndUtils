@@ -1,0 +1,80 @@
+
+if(isModule){
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+
+//赋值与引用
+def cfg = rootProject.ext.android
+def appId = rootProject.ext.appId
+
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        //组件模式下
+        if(isModule){
+            applicationId appId['compoentone']
+        }
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //Arouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+                abiFilters "armeabi-v7a"
+                //指定android的编译器
+                arguments '-DANDROID_TOOLCHAIN=clang'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    /**
+     * 配置AndroidManifest不同情况下的地址
+     */
+    sourceSets {
+        main {
+            //未开启独立编译 并且是独立的module，才会使用总是使用 library/AndroidManifest.xml
+            if (!isModule) {
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java {
+                    //release 时 debug 目录下文件不需要合并到主工程
+                    exclude 'library/**'
+                }
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation project(':baselib')
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+}
