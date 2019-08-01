@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="MVPActivity"
+    minApi="7"
+    minBuildApi="14"
+    description="创建一个基础的MvpActivity">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="name"
+        name="Activity前缀名"
+        type="string"
+        constraints="nonempty"
+        default="Item"
+        help="Other examples are 'Person', 'Book', etc." />
+
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
+
