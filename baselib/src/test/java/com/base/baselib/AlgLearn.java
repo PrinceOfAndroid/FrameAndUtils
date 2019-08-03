@@ -4,6 +4,21 @@ import org.junit.Test;
 
 public class AlgLearn {
 
+    @Test
+    public void main(){
+        fun(3);
+    }
+
+    public void fun(int n){
+        System.out.println(n);
+        if (n<0){
+            return;
+        }else {
+            fun(n-1);
+            System.out.println(n);
+        }
+    }
+
     /**
      * 冒泡排序
      * 相邻比较 大的往后放

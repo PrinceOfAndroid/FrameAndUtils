@@ -1,5 +1,6 @@
 package com.base.farmeandutils;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.base.farmeandutils.processprotect.LocalService;
+import com.base.farmeandutils.processprotect.MyJobService;
 
 @Route(path ="/app/main")
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
                 ARouter.getInstance().build("/compeoentone/main").navigation();
             }
         });
+
+        startService(new Intent(this,LocalService.class));
+        startService(new Intent(this,LocalService.class));
+        MyJobService.startJob(this);
     }
 
     /**
