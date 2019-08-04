@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 def cfg = rootProject.ext.android
+apply plugin: 'android-aspectjx'
 
 android {
     compileSdkVersion cfg.compileSdkVersion
@@ -65,4 +66,5 @@ dependencies {
     api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     api 'com.google.code.gson:gson:2.8.2'
     api 'com.squareup.okhttp3:okhttp:3.8.0'
+
 }
