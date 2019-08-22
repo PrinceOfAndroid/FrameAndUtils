@@ -27,6 +27,10 @@ android {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
+        dataBinding {
+            enabled = true
+        }
+
     }
     buildTypes {
         release {
@@ -34,6 +38,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 
 }
 
@@ -45,6 +50,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':baselib')
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+// ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+
     if (!isModule) {
         implementation project(':compoentone')
     }

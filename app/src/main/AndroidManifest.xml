@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".sample.mutil.SampleMultipleMvpActivity">
+        <activity android:name=".mvvm.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".testtemplate.TemplateActivity" />
+
 
         <service
             android:name=".processprotect.RemoteService"

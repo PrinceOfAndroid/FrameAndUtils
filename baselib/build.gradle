@@ -67,4 +67,5 @@ dependencies {
     api 'com.google.code.gson:gson:2.8.2'
     api 'com.squareup.okhttp3:okhttp:3.8.0'
 
+//    api 'android.arch.lifecycle:extensions:1.0.0'
 }
