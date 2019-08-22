@@ -48,9 +48,9 @@ public class LoginViewModel extends AndroidViewModel {
             @Override
             public void callBack(User user) {
                 if (user.getCode() == LoginModel.LOGIN_SUCCESS_CODE) {
-                    loginStatus.setValue(LoginStatus.LOGING_SUCCESS);
+                    loginStatus.setValue(LoginStatus.LOGIN_SUCCESS);
                 } else {
-                    loginStatus.setValue(LoginStatus.LOGING_FAIL);
+                    loginStatus.setValue(LoginStatus.LOGIN_FAIL);
                 }
             }
         });

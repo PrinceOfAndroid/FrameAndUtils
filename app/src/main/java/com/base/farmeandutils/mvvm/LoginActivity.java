@@ -46,10 +46,10 @@ public class LoginActivity extends AppCompatActivity{
                     case LoginStatus.LOGIN:
                         loginBinding.btnLogin.setText("登录中...");
                         break;
-                    case LoginStatus.LOGING_FAIL:
+                    case LoginStatus.LOGIN_FAIL:
                         loginBinding.btnLogin.setText("登录成功！");
                         break;
-                    case LoginStatus.LOGING_SUCCESS:
+                    case LoginStatus.LOGIN_SUCCESS:
                         loginBinding.btnLogin.setText("登录失败！");
                         break;
                 }
